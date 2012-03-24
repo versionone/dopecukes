@@ -15,9 +15,8 @@ app.configure ->
 
 app.get '/', (request, response) ->
   jsonFile = path.join(process.cwd(), 'report.json')
-  #response.render('index', {features: [1,2,3,4]})
   features = format(parser(jsonFile))
-  response.render('index', { features: features })
+  response.render('index', { title: 'Cucumber Features', features: features })
 
 module.exports.start = (port) ->
   console.log("starting server at http://0.0.0.0:#{port}")
